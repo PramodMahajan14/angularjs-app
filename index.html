@@ -1,0 +1,84 @@
+<html>
+    <heda>
+         <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular-route.js"></script>
+        
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <link rel="stylesheet" href="index.css">
+     <script src="app.js"></script>
+       <script src="controllers.js"></script>
+  
+  
+    </heda>
+        <body >
+          <div id="loader">
+            
+                    <header>
+                     
+                        <nav>
+                            <ul>
+                              <li>
+
+                                <label id="switch">
+                                  <i class="fas fa-adjust"></i>
+                                  <div>
+                                    <input type="checkbox" id="check" />
+                                    <span id="slider round"></span>
+                                  </div>
+                                </label>
+                              </li>
+                              <li>Home</li>
+                              <li >About</li>
+                            </ul>
+                          </nav>
+                    </header>
+                    
+<div id= "main" ng-app="country_app"  ng-controller="load_info"  id="light-theme">
+  <div id="imgsrc"><img  style="background-color: white;"src="https://cdn5.vectorstock.com/i/thumbs/72/24/isometric-round-frame-made-world-flags-isolated-vector-22447224.jpg"><h1>{{headingdata}}</h1></div>
+                    <div id="search_bar" ng-hide="searchbar">
+                  <label>Search:</label>  <input type="text" ng-model="search" placeholder="Enter country name..."  >
+                 Filter: <select ng-model="search_r" ng-hide='filterbar'>
+                     
+                      <option ng-model="">All</option>
+                      <option ng-model="Africa">Africa</option>
+                      <option ng-model="America">Americas</option>
+                      <option ng-model="Asia">Asia</option>
+                      <option ng-model="Europe">Europe</option>
+                      <option ng-model="Oceania">Oceania</option>
+                  </select>
+                </div>
+               
+                        
+                    <div  id="show_part" ng-show="showdata" >
+                        <div id="view_part">
+                        <ng-view></ng-view>
+                    </div>
+                </div>
+               
+                        <div ng-hide="hidedata">
+                            <div id="coun_box" >
+                                <table >
+                                   <tr id="first_row">
+                                      <td>Country</td>
+                                       <td>Region</td>
+                                       <td>Flag</td>
+                                    </tr>
+                                     <tr ng-repeat="x in countrydata |filter:search |filter:search_r" ng-style="{'background-color':$index==selectedIndex ? 'darkgray':''}" ng-click="selectcountry_info(x,$index)" 
+                    id="table_row" script="{search !== x.name ? alert('sorry'):}">
+                                      
+                                      <a href="#!cdata"> <td  id="name_set">{{x.name}}</td></a>
+                                      <td>{{x.region}}</td>
+                      
+                                     <td id="flag_set"><img src="{{x.flag}}" style="width:80px;height:65px;"></td>
+                                    </tr>
+                                </table>
+                            
+                        </div>
+                    </div>
+                    <footer><h1>{{last}}</h1></footer>
+                    </div>
+                  </div>
+        </body>
+    
+</html>
