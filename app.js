@@ -10,7 +10,7 @@ app.config(function($routeProvider,$locationProvider){
 
  
 })
-
+/* this custom directive*/
  app.directive('spacificCountry',function(){
   return{
     template:    
